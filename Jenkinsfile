@@ -44,7 +44,7 @@ pipeline {
     stage('Clean up') {
       // delete the images locally
       steps {
-        sh 'docker rmi ${REPOSITORY}:${BUILD_NUMBER} ${REPOSITORY}:prod'
+        sh 'docker rmi ${REPOSITORY}:${BUILD_NUMBER}'
       } // end steps
     } // end stage "clean up"
 
