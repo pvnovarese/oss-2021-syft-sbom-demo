@@ -1,6 +1,6 @@
 pipeline {
   
-  //environment {
+  environment {
     //
     // shouldn't need the registry variable unless you're not using dockerhub
     // registry = 'docker.io'
@@ -12,8 +12,8 @@ pipeline {
     // use credentials to set DOCKER_HUB_USR and DOCKER_HUB_PSW
     //DOCKER_HUB = credentials("${HUB_CREDENTIAL}")
     // change repository to your DockerID
-    //REPOSITORY = "${DOCKER_HUB_USR}/syft-sbom-demo"
-  //} // end environment
+    REPOSITORY = "syft-sbom-demo"
+  } // end environment
   
   agent any
   stages {
