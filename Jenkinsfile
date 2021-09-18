@@ -35,7 +35,7 @@ pipeline {
     stage('Generate SBOM with syft') {
       steps {
         script {
-          sh '/var/jenkins_home/syft -o spdx-json ${REPOSITORY}:${BUILD_NUMBER} > sbom-spdx-${BUILD_NUMBER}.json'
+          sh 'syft -o spdx-json ${REPOSITORY}:${BUILD_NUMBER} > sbom-spdx-${BUILD_NUMBER}.json'
         } // end script
       } // end steps
     } // end stage "generate sbom"
