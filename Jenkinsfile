@@ -36,6 +36,7 @@ pipeline {
       steps {
         script {
           sh 'syft -o spdx-json ${REPOSITORY}:${BUILD_NUMBER} > sbom-spdx-${BUILD_NUMBER}.json'
+          archiveArtifacts '*.json'
         } // end script
       } // end steps
     } // end stage "generate sbom"
