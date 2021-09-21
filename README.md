@@ -1,5 +1,7 @@
 # Demo: Generating a Software Bill of Materials with Syft
 
+[![.github/workflows/build-and-publish.yaml](https://github.com/pvnovarese/oss-2021-syft-sbom-demo/actions/workflows/build-and-publish.yaml/badge.svg)](https://github.com/pvnovarese/oss-2021-syft-sbom-demo/actions/workflows/build-and-publish.yaml)
+
 This is a very rough demo of using Syft with Jenkins to generate a software bill of materials.  If you don't know what Syft is, read up here: https://github.com/anchore/syft
 
 ## Part 1: Jenkins Setup 
