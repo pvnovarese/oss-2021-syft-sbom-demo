@@ -1,10 +1,12 @@
+name: Nightly Checks
+
 on:
   workflow_dispatch:
     branches:
-      - main
-  #schedule:
-  #  # Run this workflow every night at 5am UTC.
-  #  - cron: "0 5 * * *"
+      - master
+  schedule:
+    # Run this workflow every night at 5am UTC.
+    - cron: "0 5 * * *"
 
 jobs:
   scan_for_vulnerabilities:
