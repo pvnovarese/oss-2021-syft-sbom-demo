@@ -18,7 +18,7 @@ jobs:
 
       - name: "build and push the image"
         run: |
-          IMAGE="ghcr.io/pvnovarese/example:git-$GITHUB_SHA"
+          IMAGE="ghcr.io/pvnovarese/sbom-example:git-$GITHUB_SHA"
           docker build -t "$IMAGE" .
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u pvnovarese --password-stdin
           docker push "$IMAGE"
@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u pvnovarese --password-stdin
           echo "${{ secrets.COSIGN_KEY }}" > cosign.key
-          IMAGE="ghcr.io/pvnovarese/example:git-$GITHUB_SHA"
+          IMAGE="ghcr.io/pvnovarese/sbom-example:git-$GITHUB_SHA"
           # Sign the image (...and this step pushes the signature to the registry, too)
           cosign sign -key ./cosign.key "$IMAGE"
   create_image_sbom:
@@ -45,7 +45,7 @@ jobs:
     steps:
       - name: "create the SBOM"
         run: |
-          IMAGE="ghcr.io/pvnovarese/example:git-$GITHUB_SHA"
+          IMAGE="ghcr.io/pvnovarese/sbom-example:git-$GITHUB_SHA"
           # We're using `jq` only to minimize the size of the SBOM payload. In the future, Syft might produce compacted JSON data by default.
           syft "registry:$IMAGE" -o json | jq --compact-output > ./sbom.syft.json
       - uses: actions/upload-artifact@v2
