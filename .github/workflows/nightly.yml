@@ -12,15 +12,15 @@ jobs:
   scan_for_vulnerabilities:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/luhring/example-ci:latest
+      image: ghcr.io/pvnovarese/example-ci:main
     steps:
       - name: "retrieve SBOM from attestation in registry"
         run: |
           echo "${{ secrets.COSIGN_PUB }}" > ./cosign.pub
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u luhring --password-stdin
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u pvnovarese --password-stdin
           # We'll scan the image built from the latest commit on the default branch. In real scenarios, you'd want to be much more careful to ensure you're scanning all of the images that might be consumed in a downstream workflow.
-          DIGEST=$(crane digest "ghcr.io/luhring/example:git-$GITHUB_SHA")
-          IMAGE="ghcr.io/luhring/example@$DIGEST"
+          DIGEST=$(crane digest "ghcr.io/pvnovarese/example:git-$GITHUB_SHA")
+          IMAGE="ghcr.io/pvnovarese/example@$DIGEST"
           # Retrieve the attestation for this image. If the attestation has been tampered with, this command will fail. (This is a good thing! We don't want to scan for vulnerabilities using a faulty SBOM.)
           cosign verify-attestation -key ./cosign.pub $IMAGE > ./attestation_output
           # Isolate the Syft SBOM from the rest of the attestation
