@@ -1,7 +1,10 @@
 on:
-  push:
+  workflow_dispatch:
     branches:
       - main
+  #push:
+  #  branches:
+  #    - main
 
 jobs:
   build_image:
