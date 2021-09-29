@@ -28,7 +28,7 @@ Syft has a simple install script, which you can execute inside the container:
 
 Time to get to work:
 
-- Fork this repo
+- Fork this repo (actually this isn't even really necessary, you can just use this repo directly)
 - From the jenkins main page, select “New Item” 
 - Name it “syft-sbom-demo”
 - Choose “pipeline” and click “OK”
