@@ -30,7 +30,7 @@ pipeline {
       } // end steps
     } // end stage "generate sbom"
     
-    stage('Generate SBOM with syft') {
+    stage('Generate vulnerability listing with grype') {
       steps {
         script {
           // output vulns as text
@@ -42,8 +42,6 @@ pipeline {
         } // end script
       } // end steps
     } // end stage "generate sbom"
-
-    
 
     stage('Clean up') {
       // delete the images locally
