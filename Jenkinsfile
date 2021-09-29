@@ -28,6 +28,7 @@ pipeline {
           sh 'syft -o json ${REPOSITORY}:${BUILD_NUMBER} > sbom-${BUILD_NUMBER}.json'
           // bonus points: add a step here to use grype to generate a vulnerability listing from the sbom 
           sh 'grype -o json sbom:sbom-${BUILD_NUMBER}.json > vulns-${BUILD_NUMBER}.json'
+          sh 'grype sbom:sbom-${BUILD_NUMBER}.json'
           archiveArtifacts '*.json'
         } // end script
       } // end steps
