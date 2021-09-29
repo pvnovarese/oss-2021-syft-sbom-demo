@@ -18,7 +18,12 @@ Once Jenkins is up and running, we have just a few things to configure:
 ## Part 2: Get Syft
 Syft has a simple install script, which you can execute inside the container:
 
-`docker exec jenkins bash -c 'curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin'`
+`$ docker exec jenkins bash -c 'curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin'`
+
+while you're at it, you might as well install grype as well:
+
+`$ docker exec jenkins bash -c 'curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin'`
+
 
 ## Part 3: Start generating SBOMs
 
