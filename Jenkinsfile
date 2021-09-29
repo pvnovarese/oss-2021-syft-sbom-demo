@@ -16,7 +16,8 @@ pipeline {
     stage('Build image and tag with build number') {
       steps {
         script {
-          dockerImage = docker.build REPOSITORY + ":${BUILD_NUMBER}"
+          sh 'docker build -t ${REPOSITORY}:${BUILD_NUMBER} .'
+          // dockerImage = docker.build REPOSITORY + ":${BUILD_NUMBER}"
         } // end script
       } // end steps
     } // end stage "build image"
